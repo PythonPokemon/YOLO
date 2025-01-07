@@ -1,0 +1,26 @@
+names:
+- Button
+- Checkbox
+- Color
+- Dropdown-Menu
+- Image
+- Input
+- Item
+- Label
+- Messagebox
+- Progressbar
+- Radiobutton
+- Slider
+- Spinner -UpDown-
+- Textblock
+- Tooltip
+nc: 15
+roboflow:
+  license: Private
+  project: ui-control-c
+  url: https://app.roboflow.com/bildererkennung-im-bild/ui-control-c/1
+  version: 1
+  workspace: bildererkennung-im-bild
+test: ../test/images
+train: ../train/images
+val: ../valid/images
