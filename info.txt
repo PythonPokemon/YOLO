@@ -95,3 +95,53 @@ Zusammenfassung:
 Was gut läuft: Der Verlust (Loss) sinkt über die Epochen, und der mAP50 sowie Precision und Recall steigen, was auf eine Verbesserung des Modells hindeutet.
 Was schlecht laufen könnte: Wenn die Loss-Werte stagnieren oder steigen, oder wenn Precision und Recall nicht verbessern, sollte der Trainingsprozess oder die Hyperparameter überprüft werden.
 Achte während des Trainings auf eine gleichmäßige Verbesserung der Metriken und überprüfe regelmäßig den Verlauf der mAP-Werte und Loss-Werte.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Deutung auf einer Punkteskala von 1-10:
+Ich würde die Leistung mit 8/10 bewerten:
+-------------------------------------------
+
+Stärken: Hohe Präzision und Recall für viele Klassen, solide mAP-Werte (~83% bei mAP50 und ~59% bei mAP50-95), einige Klassen wie "Input" oder "Color" zeigen exzellente Leistung.
+Schwächen: Einzelne Klassen (z. B. "Tooltip", "Slider") schneiden schwach ab, und es gibt Raum für Optimierung bei Recall und mAP50-95.
+Nächste Schritte:
+Tooltip verbessern: Prüfen, ob die Trainingsdaten für Tooltip ausreichend sind oder ob die Annotationen ungenau sind.
+Slider und Textblock optimieren: Mehr Daten sammeln, falls die aktuelle Menge unzureichend ist.
+Hyperparameter-Tuning: Feineinstellungen der Lernrate oder Optimierer könnten helfen, die Leistung weiter zu verbessern.
+Augmentation: Mehr Datenaugmentierung könnte das Modell robuster machen.
+Möchtest du weiter optimieren, oder bist du mit diesen Ergebnissen zufrieden? 😊
+------------------------------------------------------------------------------------------
+neuer Durchlauf:
+
+Parameter
+
+model.train(
+    data="C:/Users/jakob.derzapf/source/repos/PythonProjekte/YOLO/UI-Control-C#-1/config/data.yaml",
+    epochs=120,               # Erhöhte Epochenanzahl für längeres Training
+    batch=16,                 # Mittelgroße Batch-Größe für GPU-Speicher und Stabilität
+    imgsz=640,                # Standardbildgröße bleibt 640x640
+    lr0=0.003,                # Reduzierte Start-Lernrate für stabilere Konvergenz
+    optimizer="AdamW",        # Spezifischer AdamW-Optimierer (gut für größere Datenmengen)
+    warmup_epochs=5,          # Verlängerte Warm-up-Phase für besseren Start
+    patience=20,              # Geduld erhöhen, um mehr Zeit für Verbesserungen zu lassen
+    save=True,                # Modelle nach jeder Epoche speichern
+    save_period=2,            # Speicherintervall auf jede zweite Epoche setzen
+    workers=8,                # Maximale Parallelisierung der Datenaufbereitung
+    verbose=True,             # Detaillierte Trainingsinformationen anzeigen
+    augment=True,             # Datenaugmentation aktivieren
+    hyp={
+        "box": 0.05,          # Loss für Bounding-Box anpassen
+        "cls": 0.5,           # Klassenverlust stärker gewichten (Dropdown relevanter machen)
+        "obj": 0.8,           # Objektverlustgewichtung unverändert
+        "label_smoothing": 0.1, # Label-Smoothing zur Verbesserung der Generalisierbarkeit
+        "iou_t": 0.25,         # Schwellenwert für IoU erhöhen
+        "fl_gamma": 2.0,      # Focal Loss verwenden, um harte Beispiele stärker zu gewichten
+    },
+    mosaic=1.0,               # Mosaic-Augmentierung für vielfältigere Trainingsdaten
+    mixup=0.2,                # MixUp-Datenaugmentation aktivieren
+    perspective=0.0,          # Perspektivische Verzerrung deaktivieren (UI-spezifisch)
+    hsv_h=0.01,               # Farbtonänderung minimieren (relevanter für UI-Bilder)
+    hsv_s=0.7,                # Sättigungsänderung für Varianz
+    hsv_v=0.4                 # Helligkeitsänderung für unterschiedliche Lichtbedingungen
+    scale=0.5,                # Skaliere kleine Objekte stärker
+)
