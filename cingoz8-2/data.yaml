@@ -1,0 +1,19 @@
+names:
+- button
+- checkbox
+- dropdown
+- icon
+- input
+- label
+- radio
+- switch
+nc: 8
+roboflow:
+  license: CC BY 4.0
+  project: cingoz8
+  url: https://universe.roboflow.com/cingoz8/cingoz8/dataset/2
+  version: 2
+  workspace: cingoz8
+test: ../test/images
+train: ../train/images
+val: ../valid/images

@@ -1,7 +1,7 @@
 import easyocr
 
 # Absoluter Pfad zum Testbild
-image_path = "c:\\Users\\jakob.derzapf\\Downloads\\6.PNG"
+image_path = "c:\\Users\\jakob.derzapf\\Downloads\\UI.PNG"
 
 reader = easyocr.Reader(['en'])  # Initialisiere den EasyOCR-Reader für Englisch
 results = reader.readtext(image_path)  # Führe Texterkennung auf dem angegebenen Bild durch
