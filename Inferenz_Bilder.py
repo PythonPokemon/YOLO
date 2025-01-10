@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import cv2
 
 # Lade das trainierte Modell
-model = YOLO("runs/detect/train7/weights/best.pt")
+model = YOLO("runs/detect/train5/weights/best.pt")
 
 # Lade ein Bild und führe die Inferenz durch
 image_path = "c:\\Users\\jakob.derzapf\\Downloads\\UI.PNG"  # Pfad zum Testbild

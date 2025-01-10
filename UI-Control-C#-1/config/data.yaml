@@ -10,11 +10,9 @@ names:
 - Messagebox
 - Progressbar
 - Radiobutton
-- Slider
 - Spinner -UpDown-
 - Textblock
-- Tooltip
-nc: 15
+nc: 9
 roboflow:
   license: Private
   project: ui-control-c

@@ -17,8 +17,8 @@ results = model.predict(source=image, save=True, save_txt=True)  # Inferenz durc
 print("YOLO-Ergebnisse geladen.")
 
 # Klassennamen (anpassen, falls nötig)
-class_names = ["Button", "Checkbox", "Color", "Dropdown-Menu", "Image", "Input", "Label", "Messagebox",
-               "Progressbar", "Radiobutton", "Slider", "Spinner-UpDown", "Textblock", "Tooltip"]
+class_names = ["Button", "Checkbox", "Dropdown-Menu", "Input", "Item", "Label",
+                "Radiobutton", "Spinner-UpDown", "Textblock"]
 
 # 3. Ergebnisse von YOLO verarbeiten
 reader = easyocr.Reader(['en'])  # EasyOCR-Reader für Englisch initialisieren

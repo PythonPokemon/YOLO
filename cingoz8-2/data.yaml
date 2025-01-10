@@ -1,13 +1,20 @@
 names:
-- button
-- checkbox
-- dropdown
-- icon
-- input
-- label
-- radio
-- switch
-nc: 8
+- Button
+- Checkbox
+- Color
+- Dropdown-Menu
+- Image
+- Input
+- Item
+- Label
+- Messagebox
+- Progressbar
+- Radiobutton
+- Slider
+- Spinner -UpDown-
+- Textblock
+- Tooltip
+nc: 15
 roboflow:
   license: CC BY 4.0
   project: cingoz8
